@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Estate>
+
+@{
+    ViewData["Title"] = "List of Estates";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Image_url)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.City)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Size)</th>
+                    <th>@Html.DisplayNameFor(model => model.Rooms)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="allign-middle">
+                            <img class="rounded-circle" src="@item.Image_url" alt="@item.Name" style="max-width: 150px" />
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td class="allign-middle">
+                            @Html.DisplayFor(modelItem => item.Rooms)
+                        </td>
+                        <td class="allign-middle">
+                            <a class=" btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a> |
+                            <a class=" btn btn-outline-info"><i class="bi bi-eye"></i>Details</a> |
+                            <a class=" btn btn-outline-danger"><i class="bi bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>

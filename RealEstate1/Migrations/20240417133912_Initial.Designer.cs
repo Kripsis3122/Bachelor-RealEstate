@@ -11,7 +11,7 @@ using RealEstate1.Data;
 namespace RealEstate1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240417095806_Initial")]
+    [Migration("20240417133912_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
