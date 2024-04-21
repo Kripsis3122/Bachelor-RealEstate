@@ -15,9 +15,9 @@ namespace RealEstate1.Models
         public string? City { get; set; }
         [Display(Name = "Address")]
         public string? Address { get; set; }
-        [Display(Name = "Price, $")]
+        [Display(Name = "Price, €")]
         public double Price  { get; set; }
-        [Display(Name = "Size, mm3")]
+        [Display(Name = "Size, м²")]
         public double Size  { get; set; }
         [Display(Name = "Number of rooms")]
         public double Rooms  { get; set; }

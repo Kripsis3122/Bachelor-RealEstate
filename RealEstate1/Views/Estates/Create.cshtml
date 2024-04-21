@@ -1,0 +1,81 @@
+﻿@model Estate
+
+@{
+    ViewData["Title"] = "Add new Estate";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add new Estate</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                </form>
+                <div class="form-group text-center">
+                    <img id="ImagePreview" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image_url" class="control-label"></label>
+                    <input asp-for="Image_url" class="form-control" />
+                    <span asp-validation-for="Image_url" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label"></label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rooms" class="control-label"></label>
+                    <input asp-for="Rooms" class="form-control" />
+                    <span asp-validation-for="Rooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EstateCategory" class="control-label"></label>
+                    <input asp-for="EstateCategory" class="form-control" />
+                    <span asp-validation-for="EstateCategory" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-outline-success" style="float:right; margin-top: 25px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#Image_url").on("change", function () {
+            var output = document.getElementById('ImagePreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

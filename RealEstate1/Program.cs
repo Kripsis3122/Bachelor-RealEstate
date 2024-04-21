@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate1.Data;
+using RealEstate1.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 //DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+//Service configuration
+builder.Services.AddScoped<IEstatesService, EstatesService>();
 
 var app = builder.Build();
 
