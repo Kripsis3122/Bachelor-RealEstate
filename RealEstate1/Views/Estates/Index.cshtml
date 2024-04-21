@@ -1,64 +1,142 @@
-﻿@model IEnumerable<Estate>
+﻿@using RealEstate1.Data.Enums
+
+@model IEnumerable<Estate>
 
 @{
     ViewData["Title"] = "List of Estates";
 }
 
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table>
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Image_url)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.City)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address)</th>
-                    <th>@Html.DisplayNameFor(model => model.Price)</th>
-                    <th>@Html.DisplayNameFor(model => model.Size)</th>
-                    <th>@Html.DisplayNameFor(model => model.Rooms)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="allign-middle">
-                            <img class="rounded-circle" src="@item.Image_url" alt="@item.Name" style="max-width: 150px" />
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.City)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Size)
-                        </td>
-                        <td class="allign-middle">
-                            @Html.DisplayFor(modelItem => item.Rooms)
-                        </td>
-                        <td class="allign-middle">
-                            <a class=" btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a> |
-                            <a class=" btn btn-outline-info"><i class="bi bi-eye"></i>Details</a> |
-                            <a class=" btn btn-outline-danger"><i class="bi bi-trash"></i>Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
+<div id="container">
+    <div id="content">
+        <div style="display: flex; flex-direction: row; width:100%;">
+            <nav id="menu_new" style="background-color: rgb(252, 252, 253); --darkreader-inline-bgcolor: #191c1d;" data-darkreader-inline-bgcolor="">
+                <ul>
+                    <li class="menu_root_selected">
+                        <div>
+                            <a style="font-size: 20px;" title="Categories" href="https://www.cenotavr.lv/nedvijimost">Categories</a>
+                        </div>
+                        <ul>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Apartment" href="https://www.cenotavr.lv/nedvijimost">Apartment</a></li>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="House" href="https://www.cenotavr.lv/nedvijimost">House</a></li>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Mansion" href="https://www.cenotavr.lv/nedvijimost">Mansion</a></li>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Land" href="https://www.cenotavr.lv/nedvijimost">Land</a></li>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Office" href="https://www.cenotavr.lv/nedvijimost">Office</a></li>
+                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Development" href="https://www.cenotavr.lv/nedvijimost">Development</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <main id="rightM" style="flex:1">
+                    <div style="margin-left:4px; margin-top:5px;">
+						<form method="GET" action="" onsubmit="gett()" id="filters">
+							<fieldset style="padding: 13px; border-radius: 5px; border: medium; background-color: rgb(245, 245, 245); --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-bottom: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-bgcolor: #1e2021;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-bgcolor="">
+								<legend>Filters</legend>
+								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
+									Price:
+									<input id="pr_min" name="pr_min" placeholder="from" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">&nbsp;&nbsp;
+									<input name="pr_max" placeholder="to" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">
+								</span>
+								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
+									Object area, m²:
+									<input name="p_1_min" placeholder="from" value="" type="number" step="1" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 80px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">&nbsp;&nbsp;
+									<input name="p_1_max" placeholder="to" value="" type="number" step="1" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 80px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">
+								</span>
+
+								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
+									Land area, hectares:
+									<input name="p_2_min" placeholder="from" value="" type="number" step="1" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 80px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">&nbsp;&nbsp;
+									<input name="p_2_max" placeholder="to" value="" type="number" step="1" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 80px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">
+								</span>
+
+								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
+									<script>
+										function gett() {
+											var elements = document.getElementById("filters").elements;
+											for (var i = 0, element; element = elements[i++];) {
+												if (element.value === "") {
+													document.getElementsByName(element.name)[0].disabled = true;
+												}
+											}
+											document.forms["filters"].submit();
+										}
+									</script>
+									<input type="button" onclick="gett()" style="margin-left: 15px" value="   ✔   ">
+									<input type="button" style="margin-left: 15px" name="reset_f" onclick="location.href='nedvijimost'" value=" ✘ ">
+								</span>
+							</fieldset>
+
+							<div style="margin-top: 5px; padding: 13px; border-radius: 5px; background-color: rgb(250, 250, 250); --darkreader-inline-bgcolor: #1b1d1e;" data-darkreader-inline-bgcolor="">
+								Sort:
+								<select name="sort" onchange="gett()">
+									<option value="1">By Name</option>
+									<option value="2">By Ascending Price</option>
+									<option value="3">By Descending Price</option>
+									<option value="4">By Ascending Date</option>
+									<option value="5">By Descending Date</option>
+								</select>
+							</div>
+
+						</form>
+						<div class="row">
+						@foreach (var item in Model)
+						{
+							<div id="ads" style="width:auto">
+								<div class="container">
+									<div class="outer" style="display: flex; flex-direction: column; ">
+											<a title="@item.Name" href="">
+												<img loading="lazy" itemprop="image" alt="@item.Name" class="card" src="@item.Image_url" style="width:265px;height:149px;">
+											</a>
+
+										<div style="width:265px; flex-grow: 4; ">
+											<div style="height: 20px; padding:6px; overflow: hidden;">
+												<strong>
+													<a style="font-size:12px;" itemprop="url" href=""><span itemprop="name">@item.Name</span></a>
+												</strong>
+											</div>
+											@if (item.EstateCategory == EstateCategory.Land)
+											{
+												<div style="padding-left:5px; padding-top:2px;"><span style="background-color: rgba(148, 196, 192, 0.4); padding: 3px 4px; border-radius: 5px; font-size: 13px; margin: 2px; line-height: 25px; --darkreader-inline-bgcolor: rgba(54, 97, 94, 0.4);" data-darkreader-inline-bgcolor="">@item.Size hectares</span></div>
+											}
+											else
+											{
+												<div style="padding-left:5px; padding-top:2px;"><span style="background-color: rgba(148, 196, 192, 0.4); padding: 3px 4px; border-radius: 5px; font-size: 13px; margin: 2px; line-height: 25px; --darkreader-inline-bgcolor: rgba(54, 97, 94, 0.4);" data-darkreader-inline-bgcolor="">@item.Size м²</span><span style="background-color: rgba(247, 109, 115, 0.4); padding: 3px 4px; border-radius: 5px; font-size: 13px; margin: 2px; line-height: 25px; --darkreader-inline-bgcolor: rgba(136, 7, 13, 0.4);" data-darkreader-inline-bgcolor="">@(Math.Round(@item.Price / item.Size, 2)) €/м²</span></div>
+											}
+											<div style="height: 110px; overflow:hidden; flex-grow: 4;">
+												<p style="padding: 12px;">
+													@item.Description
+												</p>
+											</div>
+										</div>
+
+										<div style="height: 20px; margin-left: 5px; margin-right: 5px; border-bottom: 1px solid lightgrey; --darkreader-inline-border-bottom: #3c4144;" data-darkreader-inline-border-bottom="">
+											<div style="display: flex; flex-wrap: nowrap; justify-content: space-between;">
+												<div style="width: 80px; overflow: hidden; padding-left:3px;">
+													<span style="position: relative; font-size:11px; font-weight:bold; top: 0; left: 0; display:inline-block; white-space: nowrap;
+			  			  animation-duration: 10s;
+			  animation-iteration-count: infinite;
+					  ">Надежда </span>
+												</div>
+												<div style="max-width: 160px; overflow: hidden; white-space: nowrap;">
+													<span style="font-size:11px; width:170px; "><!--&#128193;--> <a href="">@item.EstateCategory</a></span>
+												</div>
+											</div>
+										</div>
+										<div style="padding: 7px;" itemscope="">
+											<span itemprop="price" content="11623"></span>
+											<span itemprop="priceCurrency" content="EUR"></span>
+											<span itemprop="url" content=""></span>
+
+											<span style="font-weight:bold">@item.Price €</span>			<span style="float: right;">@item.City , @item.Address</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+                    </div>
+            </main>
+        </div>
     </div>
 </div>
+
