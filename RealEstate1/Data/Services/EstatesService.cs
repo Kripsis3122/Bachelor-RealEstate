@@ -10,9 +10,10 @@ namespace RealEstate1.Data.Services
         {
             _context = context;
         }
-        public void Add(Estate estate)
+        public async Task AddAsync(Estate estate)
         {
-            throw new NotImplementedException();
+            await _context.Estates.AddAsync(estate);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -20,15 +21,16 @@ namespace RealEstate1.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Estate>> GetAll()
+        public async Task<IEnumerable<Estate>> GetAllAsync()
         {
             var result = await _context.Estates.ToListAsync();
             return result;
         }
 
-        public Estate GetById(int id)
+        public async Task<Estate> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Estates.FirstOrDefaultAsync(e => e.Id == id);
+            return result;
         }
 
         public Estate Update(int id, Estate newEstate)

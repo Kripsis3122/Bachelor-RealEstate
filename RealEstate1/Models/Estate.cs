@@ -1,5 +1,6 @@
 ﻿using RealEstate1.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RealEstate1.Models
 {
@@ -8,22 +9,30 @@ namespace RealEstate1.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "Name of the Estate")]
-        public string? Name { get; set; }
+        [Required(ErrorMessage = "Name of the esate is required")]
+        public string Name { get; set; }
         [Display(Name = "Description")]
-        public string? Description { get; set; }
+		[Required(ErrorMessage = "Description is required")]
+		public string Description { get; set; }
         [Display(Name = "City")]
-        public string? City { get; set; }
+		[Required(ErrorMessage = "City is required")]
+		public string City { get; set; }
         [Display(Name = "Address")]
-        public string? Address { get; set; }
+		[Required(ErrorMessage = "Address is required")]
+		public string Address { get; set; }
         [Display(Name = "Price, €")]
-        public double Price  { get; set; }
+		[Required(ErrorMessage = "Price is required")]
+		public double Price  { get; set; }
         [Display(Name = "Size, м²")]
-        public double Size  { get; set; }
+		[Required(ErrorMessage = "Size is required")]
+		public double Size  { get; set; }
         [Display(Name = "Number of rooms")]
-        public double Rooms  { get; set; }
+		public double Rooms  { get; set; }
         [Display(Name = "Estate picture URL")]
-        public string? Image_url { get; set; }
-        public EstateCategory EstateCategory { get; set; }
+		[StringSyntax(StringSyntaxAttribute.Uri)]
+		public string Image_url { get; set; }
+		[Required(ErrorMessage = "Estate category is required")]
+		public EstateCategory EstateCategory { get; set; }
         
     }
 }

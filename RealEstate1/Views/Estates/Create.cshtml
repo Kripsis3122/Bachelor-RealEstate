@@ -1,81 +1,150 @@
-﻿@model Estate
+﻿@using RealEstate1.Data.Enums
+@model Estate
 
 @{
     ViewData["Title"] = "Add new Estate";
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Add new Estate</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                </form>
-                <div class="form-group text-center">
-                    <img id="ImagePreview" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Image_url" class="control-label"></label>
-                    <input asp-for="Image_url" class="form-control" />
-                    <span asp-validation-for="Image_url" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="City" class="control-label"></label>
-                    <input asp-for="City" class="form-control" />
-                    <span asp-validation-for="City" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Address" class="control-label"></label>
-                    <input asp-for="Address" class="form-control" />
-                    <span asp-validation-for="Address" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Size" class="control-label"></label>
-                    <input asp-for="Size" class="form-control" />
-                    <span asp-validation-for="Size" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rooms" class="control-label"></label>
-                    <input asp-for="Rooms" class="form-control" />
-                    <span asp-validation-for="Rooms" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="EstateCategory" class="control-label"></label>
-                    <input asp-for="EstateCategory" class="form-control" />
-                    <span asp-validation-for="EstateCategory" class="text-danger"></span>
-                </div>
+<div id="content">
+	<form method="post" id="addForm" name="addForm" enctype="multipart/form-data" accept-charset="UTF-8">
+		<h1 style="text-align:center; padding-bottom:13px;">Add new Estate</h1>
+		<table>
+			<form asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<tbody>
+				<tr id="nameLine">
+					<td class="td1">Name of the Estate</td>
+					<td class="td2-add">
+						<div class="form-group">
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
 
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-outline-success" style="float:right; margin-top: 25px;" />
-                </div>
-            </div>
-        </div>
-    </div>
+				<tr id="categoryLine">
+					<td class="td1">What kind of estate</td>
+					<td class="td2-add">
+						<div class="form-group">
+							<select asp-for="EstateCategory" class="form control" asp-items="Html.GetEnumSelectList<EstateCategory>()"></select>
+							<span asp-validation-for="EstateCategory" class="text-danger"></span>
+						</div>
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+				<tr id="citylLine">
+					<td class="td1">City</td>
+					<td class="td2-add">
+						<div class="form-group">
+							<input asp-for="City" class="form-control" />
+							<span asp-validation-for="City" class="text-danger"></span>
+						</div>
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+				<tr id="addressLine">
+					<td class="td1">Address</td>
+					<td class="td2-add">
+						<div class="form-group">
+							<input asp-for="Address" class="form-control" />
+							<span asp-validation-for="Address" class="text-danger"></span>
+						</div>
+					</td>
+					<td class="td3-add" id="addressText">
+						For example: Maskavas 228
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+				<tr>
+					<td colspan="3" id="params">
+						<table>
+							<tbody>
+								<tr>
+									<td class="td1">Size of the estate</td>
+									<td class="td2-add">
+										<div class="form-group">
+											<input asp-for="Size" class="form-control" />
+											<span asp-validation-for="Size" class="text-danger"></span>
+										</div>
+									</td>
+									<td class="td3-add"></td>
+								</tr>
+								<tr>
+									<td class="td1">Number of rooms</td>
+									<td class="td2-add">
+										<div class="form-group">
+											<input asp-for="Rooms" class="form-control" />
+											<span asp-validation-for="Rooms" class="text-danger"></span>
+										</div>
+									</td>
+									<td class="td3-add"></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</td>
+					<td></td>
+				</tr>
+
+				<tr id="priceLine">
+					<td class="td1">Price</td>
+					<td class="td2-add">
+						<div class="form-group">
+							<input asp-for="Price" class="form-control" />
+							<span asp-validation-for="Price" class="text-danger"></span>
+						</div>
+					</td>
+					<td class="td3-add"><div id="priceText"></div></td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+				<tr id="message_addLine">
+					<td class="td1">Description</td>
+					<td colspan="2">
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align: top;">
+										<div class="form-group">
+											<textarea asp-for="Description" type="text" class="form-control" rows="20" id="message_add"></textarea>
+										</div>
+									</td>
+									<td class="td3-add">
+										<div id="message_addText"></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+				<tr id="photosLine">
+					<td class="td1">Photo</td>
+					<td class="td2-add" colspan="2">
+						<div class="form-group">
+							<input asp-for="Image_url" class="form-control" />
+							<span asp-validation-for="Image_url" class="text-danger"></span>
+						</div>
+					</td>
+				</tr>
+				<tr><td colspan="3" class="spcr"></td></tr>
+
+			<td class="td1"></td>
+			<td colspan="2">
+				<div class="form-group">
+					<input type="submit" value="Create" class="btn btn-outline-success" style="float:right; margin-top: 25px;" />
+				</div>
+			</td>
+
+			</tbody>
+	</form>
+	</table>
+	</form>
+	<input type="hidden" id="userBalance" value="">
+	<br style="clear:both;">
 </div>
-
-@section Scripts{
-    <script>
-        $("#Image_url").on("change", function () {
-            var output = document.getElementById('ImagePreview');
-            output.src = $(this).val();
-        })
-    </script>
-}

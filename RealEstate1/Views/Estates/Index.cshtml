@@ -84,14 +84,14 @@
 							<div id="ads" style="width:auto">
 								<div class="container">
 									<div class="outer" style="display: flex; flex-direction: column; ">
-											<a title="@item.Name" href="">
+											<a title="@item.Name" asp-controller="Estates" asp-action="Details" asp-route-id="@item.Id">
 												<img loading="lazy" itemprop="image" alt="@item.Name" class="card" src="@item.Image_url" style="width:265px;height:149px;">
 											</a>
 
 										<div style="width:265px; flex-grow: 4; ">
 											<div style="height: 20px; padding:6px; overflow: hidden;">
 												<strong>
-													<a style="font-size:12px;" itemprop="url" href=""><span itemprop="name">@item.Name</span></a>
+													<a style="font-size:12px;" itemprop="url" asp-controller="Estates" asp-action="Details" asp-route-id="@item.Id"><span itemprop="name">@item.Name</span></a>
 												</strong>
 											</div>
 											@if (item.EstateCategory == EstateCategory.Land)

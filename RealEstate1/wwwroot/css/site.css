@@ -182,4 +182,177 @@ body {
     margin-left: 5px;
     box-shadow: inset 0 -2px 3px 0px #aaa;
     background: #fff;
-}	
+}
+
+#price {
+    width: 100px;
+}
+
+#message_add {
+    height: 200px;
+    width: 600px;
+    padding-bottom: 7px;
+    background-color: white;
+}
+
+#addForm {
+    line-height: 35px;
+    padding-top: 13px;
+}
+
+.spcr {
+    height: 7px;
+    border-bottom: 1px solid Silver;
+    margin-bottom: 7px;
+}
+
+.td1 {
+    text-align: right;
+    width: 300px;
+    vertical-align: top;
+    padding-right: 17px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.td2 {
+    vertical-align: top;
+}
+
+    .td2 input {
+        width: 400px;
+        height: 20px;
+        margin-top: 7px;
+    }
+
+.td2-add input {
+    width: 270px;
+    height: 20px;
+    margin-top: 7px;
+}
+
+.td2-add select {
+    font-size: 17px;
+    margin-top: 7px;
+}
+
+.td3 {
+    text-align: left;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.td3-add {
+    padding-left: 3px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 15px;
+    width: 380px;
+}
+
+.td3-add-custom {
+    padding-left: 3px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.page_header {
+    width: 990px;
+    position: relative;
+    text-align: left;
+    background-color: #FFF;
+    z-index: 20
+}
+
+#page_main_full {
+    padding-top: 8px
+}
+
+#page_main {
+    width: 728px;
+    min-height: 500px;
+    padding-top: 8px
+}
+
+.page_main {
+    width: 728px;
+    padding-bottom: 15px
+}
+
+@media print {
+    #page_main,
+    .page_div_main {
+        width: 100%
+    }
+}
+
+#content_main_div,
+#ads_main_div {
+    padding-left: 3px;
+    padding-right: 2px
+}
+
+#msg_div_preloader {
+    font-size: 13px;
+    line-height: 22px
+}
+
+.ads_opt_name {
+    font-size: 12px;
+    color: #777;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 3px
+}
+
+.ads_opt_name_big {
+    font-size: 20px;
+    color: #777;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 3px
+}
+
+.ads_opt {
+    font-size: 13px;
+    color: #000;
+    width: 100%;
+    white-space: normal;
+    height: 22px;
+    font-weight: bold
+}
+
+.ads_opt_link {
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold
+}
+
+    .ads_opt_link:hover {
+        color: #06C;
+        text-decoration: none;
+        font-weight: bold
+    }
+
+.ads_opt_link_map {
+    color: #06C;
+    text-decoration: underline
+}
+
+    .ads_opt_link_map:hover {
+        text-decoration: none
+    }
+
+.ads_price {
+    font-size: 20px;
+    color: green;
+    font-weight: bold;
+    width: 100%;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 3px
+}

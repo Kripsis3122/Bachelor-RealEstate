@@ -1,0 +1,114 @@
+﻿@using RealEstate1.Data.Enums
+@model Estate
+
+@{
+    ViewData["Title"] = "Add new Estate";
+}
+
+<div align="center">
+	<div class="page_header">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						<div style="float:left;" class="page_div_main">
+							<table id="page_main" border="0" cellpadding="0" cellspacing="0" width="100%">
+								<tbody>
+									<tr>
+										<td valign="top">
+											<div id="content_main_div">
+												<center>
+													<div id="msg_div_preload" style="display: block; padding-bottom: 10px;">
+														<img loading="lazy" itemprop="image" alt="@Model.Name" class="card" src="@Model.Image_url" style="width:600px;height:500px;">
+													</div>
+												</center>
+
+												<div id="msg_div_msg">
+													<div style="float:right;margin:0px 0px 20px 20px;" id="content_sys_div_msg"></div>
+													@Model.Description
+													<br>
+													<br>
+													<table cellpadding="0" cellspacing="0" border="0" width="100%" class="options_list">
+														<tbody>
+															<tr>
+																<td width="50%" valign="top">
+																	<table border="0" width="100%" cellpadding="1" cellspacing="0">
+																		<tbody>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">City:</td>
+																				<td class="ads_opt" id="tdo_20" nowrap=""><b>@Model.City</b></td>
+																			</tr>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Address:</td>
+																				<td class="ads_opt" id="tdo_856" nowrap=""><b>@Model.Address</b></td>
+																			</tr>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Rooms:</td>
+																				<td class="ads_opt" id="tdo_1" nowrap="">@Model.Rooms</td>
+																			</tr>
+																			<tr><td height="20" class="ads_opt_name" width="30" nowrap="">Size:</td>
+																				<td class="ads_opt" id="tdo_3" nowrap="">@Model.Size м²</td>
+																			</tr>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Category:</td>
+																				<td class="ads_opt" id="tdo_3" nowrap="">@Model.EstateCategory</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+																<td width="50%" valign="top">
+																	<table border="0" width="100%" cellpadding="1" cellspacing="0">
+																		<tbody>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Owner:</td>
+																				<td class="ads_opt" id="tdo_4" nowrap="">User</td>
+																			</tr>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Phone:</td>
+																				<td class="ads_opt" id="tdo_6" nowrap="">+371 88005553535</td>
+																			</tr>
+																			<tr>
+																				<td height="20" class="ads_opt_name" width="30" nowrap="">Email:</td>
+																				<td class="ads_opt" id="tdo_2" nowrap="">Dimanche@Proshmandovki.ru</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<table style="border-top: 1px solid rgb(238, 238, 238); padding-top: 5px; margin-top: 10px; --darkreader-inline-border-top: #35393b;" cellpadding="1" cellspacing="0" border="0" width="100%" data-darkreader-inline-border-top="">
+														<tbody>
+															<tr>
+																<td valign="top" height="20" class="ads_opt_name_big" width="30" nowrap="">Price:</td>
+																<td class="ads_price" id="tdo_8" valign="top" nowrap="">@Model.Price € (@(Math.Round(@Model.Price / Model.Size, 2)) €/м²)</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div style="float:left;">
+							<div id="page_right" class="noprint" style="position: absolute; top: 0px;">
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+												<a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@Model.Id"><i class="bi bi-trash"></i>Delete</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>	
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
