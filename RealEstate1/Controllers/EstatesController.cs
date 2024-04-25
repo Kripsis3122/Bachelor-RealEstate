@@ -36,6 +36,54 @@ namespace RealEstate1.Controllers
 			return View("Index", allEstates);
 		}
 
+        public async Task<IActionResult> Filter(int category)
+        {
+            var allEstates = await _service.GetAllAsync();
+            
+            var filteredResult = allEstates.Where(e => (int)e.EstateCategory==category).ToList();
+
+            return View("Index", filteredResult);
+        }
+		public async Task<IActionResult> SortByName()
+		{
+			var allEstates = await _service.GetAllAsync();
+			var sortedEstates = allEstates.OrderBy(e => e.Name).ToList();
+
+			return View("Index", sortedEstates);
+		}
+		public async Task<IActionResult> SortByPriceAsc()
+		{
+			var allEstates = await _service.GetAllAsync();
+			var sortedEstates = allEstates.OrderBy(e => e.Price).ToList();
+
+			return View("Index", sortedEstates);
+		}
+
+		public async Task<IActionResult> SortByPriceDesc()
+		{
+			var allEstates = await _service.GetAllAsync();
+
+			var sortedEstates = allEstates.OrderByDescending(e => e.Price).ToList();
+
+			return View("Index", sortedEstates);
+		}
+		public async Task<IActionResult> SortByDateAsc()
+		{
+			var allEstates = await _service.GetAllAsync();
+
+			var sortedEstates = allEstates.OrderBy(e => e.date_added).ToList();
+
+			return View("Index", sortedEstates);
+		}
+		public async Task<IActionResult> SortByDateDesc()
+		{
+			var allEstates = await _service.GetAllAsync();
+
+			var sortedEstates = allEstates.OrderByDescending(e => e.date_added).ToList();
+
+			return View("Index", sortedEstates);
+		}
+
 		//Get Estates/Create
 		public async Task<IActionResult> Create()
         {

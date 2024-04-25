@@ -33,6 +33,8 @@ namespace RealEstate1.Models
 		public string Image_url { get; set; }
 		[Required(ErrorMessage = "Estate category is required")]
 		public EstateCategory EstateCategory { get; set; }
+
+        public DateOnly? date_added { get; set; }
         
     }
 }

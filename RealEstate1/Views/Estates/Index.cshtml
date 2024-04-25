@@ -6,6 +6,8 @@
     ViewData["Title"] = "List of Estates";
 }
 
+<script src="~/js/site.js"></script>
+
 <div id="container">
     <div id="content">
         <div style="display: flex; flex-direction: row; width:100%;">
@@ -13,15 +15,15 @@
                 <ul>
                     <li class="menu_root_selected">
                         <div>
-                            <a style="font-size: 20px;" title="Categories" href="https://www.cenotavr.lv/nedvijimost">Categories</a>
+                            <a style="font-size: 20px;" title="Categories">Categories</a>
                         </div>
                         <ul>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Apartment" href="https://www.cenotavr.lv/nedvijimost">Apartment</a></li>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="House" href="https://www.cenotavr.lv/nedvijimost">House</a></li>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Mansion" href="https://www.cenotavr.lv/nedvijimost">Mansion</a></li>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Land" href="https://www.cenotavr.lv/nedvijimost">Land</a></li>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Office" href="https://www.cenotavr.lv/nedvijimost">Office</a></li>
-                            <li><a onmouseover="document.getElementById('categoriesHover').style.display='none'" title="Development" href="https://www.cenotavr.lv/nedvijimost">Development</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=1 title="Apartment">Apartment</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=2 title="House">House</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=3 title="Mansion">Mansion</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=4 title="Land">Land</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=5 title="Office">Office</a></li>
+							<li><a asp-controller="Estates" asp-action="Filter" asp-route-category=6 title="Development">Development</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -50,33 +52,23 @@
 								</span>
 
 								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
-									<script>
-										function gett() {
-											var elements = document.getElementById("filters").elements;
-											for (var i = 0, element; element = elements[i++];) {
-												if (element.value === "") {
-													document.getElementsByName(element.name)[0].disabled = true;
-												}
-											}
-											document.forms["filters"].submit();
-										}
-									</script>
 									<input type="button" onclick="gett()" style="margin-left: 15px" value="   ✔   ">
 									<input type="button" style="margin-left: 15px" name="reset_f" onclick="location.href='nedvijimost'" value=" ✘ ">
 								</span>
 							</fieldset>
 
 							<div style="margin-top: 5px; padding: 13px; border-radius: 5px; background-color: rgb(250, 250, 250); --darkreader-inline-bgcolor: #1b1d1e;" data-darkreader-inline-bgcolor="">
-								Sort:
-								<select name="sort" onchange="gett()">
-									<option value="1">By Name</option>
-									<option value="2">By Ascending Price</option>
-									<option value="3">By Descending Price</option>
-									<option value="4">By Ascending Date</option>
-									<option value="5">By Descending Date</option>
-								</select>
+							<div class="dropdown">
+								<button onclick="myFunction()" class="dropbtn">Sort by:</button>
+								<div class="dropdown-content">
+									<a asp-controller="Estates" asp-action="SortByName">Name</a>
+									<a asp-controller="Estates" asp-action="SortByPriceAsc">Ascending Price</a>
+									<a asp-controller="Estates" asp-action="SortByPriceDesc">Descending Price</a>
+									<a asp-controller="Estates" asp-action="SortByDateAsc">Ascending Date</a>
+									<a asp-controller="Estates" asp-action="SortByDateDesc">Descending Date</a>
+								</div>
 							</div>
-
+							</div>
 						</form>
 						<div class="row">
 						@foreach (var item in Model)
@@ -140,3 +132,8 @@
     </div>
 </div>
 
+<script>
+	function myDropdown1() {
+		document.getElementById("sortBy").classList.toggle("show");
+	}
+</script>
