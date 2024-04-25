@@ -44,7 +44,7 @@ namespace RealEstate1.Controllers
         {
             var estateDetails = await _service.GetByIdAsync(id);
 
-            if (estateDetails == null) return View("Empty");
+            if (estateDetails == null) return View("NotFound");
             return View(estateDetails);
         }
 
@@ -53,7 +53,7 @@ namespace RealEstate1.Controllers
 		{
 			var estateDetails = await _service.GetByIdAsync(id);
 
-			if (estateDetails == null) return View("Not found");
+			if (estateDetails == null) return View("NotFound");
 			return View(estateDetails);
 		}
 
@@ -75,7 +75,7 @@ namespace RealEstate1.Controllers
         {
             var estateDetails = await _service.GetByIdAsync(id);
 
-            if (estateDetails == null) return View("Not found");
+            if (estateDetails == null) return View("NotFound");
             return View(estateDetails);
         }
 
@@ -84,7 +84,7 @@ namespace RealEstate1.Controllers
         {
             var estateDetails = await _service.GetByIdAsync(id);
 
-            if (estateDetails == null) return View("Not found");
+            if (estateDetails == null) return View("NotFound");
 
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
