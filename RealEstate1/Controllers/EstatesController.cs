@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RealEstate1.Data;
 using RealEstate1.Data.Services;
 using RealEstate1.Models;
+using System.Text.RegularExpressions;
 
 namespace RealEstate1.Controllers
 {
@@ -20,8 +21,23 @@ namespace RealEstate1.Controllers
             return View(allEstates);
         }
 
-        //Get Estates/Create
-        public async Task<IActionResult> Create()
+		public async Task<IActionResult> Search(string searchString)
+		{
+			var allEstates = await _service.GetAllAsync();
+
+			if (!string.IsNullOrEmpty(searchString))
+			{
+
+                var filteredResult = allEstates.Where(e => e.Name.ToUpperInvariant().Contains(searchString.ToUpperInvariant()) || e.Description.ToUpperInvariant().Contains(searchString.ToUpperInvariant())).ToList();
+
+                return View("Index", filteredResult);
+			}
+
+			return View("Index", allEstates);
+		}
+
+		//Get Estates/Create
+		public async Task<IActionResult> Create()
         {
             return View();
         }
