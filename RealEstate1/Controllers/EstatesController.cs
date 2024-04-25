@@ -48,5 +48,26 @@ namespace RealEstate1.Controllers
             return View(estateDetails);
         }
 
+		//Get Estates/Update
+		public async Task<IActionResult> Edit(int id)
+		{
+			var estateDetails = await _service.GetByIdAsync(id);
+
+			if (estateDetails == null) return View("Not found");
+			return View(estateDetails);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(int id, Estate estate)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(estate);
+			}
+
+			await _service.EditAsync(id,estate);
+
+			return RedirectToAction(nameof(Index));
+		}
 	}
 }

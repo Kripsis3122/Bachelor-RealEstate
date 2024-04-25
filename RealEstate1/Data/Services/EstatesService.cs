@@ -33,9 +33,11 @@ namespace RealEstate1.Data.Services
             return result;
         }
 
-        public Estate Update(int id, Estate newEstate)
+        public async Task<Estate> EditAsync(int id, Estate newEstate)
         {
-            throw new NotImplementedException();
+            _context.Update(newEstate);
+            await _context.SaveChangesAsync();
+            return newEstate;
         }
     }
 }

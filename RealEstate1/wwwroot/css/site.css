@@ -17,7 +17,6 @@ body {
   margin-bottom: 60px;
 }
 */
-
 #menu_new {
     padding: 0px;
     margin: 0px;
@@ -49,7 +48,7 @@ body {
 
 .menu_root_selected {
     list-style: none;
-    background-color: #e9e9e6;
+    background-color: #222831 /*#FAF4E4*/;
     width: 270px;
     border-radius: 5px;
 }
@@ -91,7 +90,7 @@ body {
         height: 41px;
         padding: 10px;
         list-style: none;
-        background-color: #6f6f6f;
+        background-color: #7bc74d /*#D3A121*/;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }

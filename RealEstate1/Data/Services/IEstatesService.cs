@@ -7,7 +7,7 @@ namespace RealEstate1.Data.Services
         Task<IEnumerable<Estate>> GetAllAsync();
         Task<Estate> GetByIdAsync(int id);
         Task AddAsync(Estate estate);
-        Estate Update(int id, Estate newEstate);
+        Task<Estate> EditAsync(int id, Estate newEstate);
         void Delete(int id);
     }
 }
