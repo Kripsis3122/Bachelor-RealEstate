@@ -69,5 +69,26 @@ namespace RealEstate1.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
-	}
+
+        //Get Estates/Delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var estateDetails = await _service.GetByIdAsync(id);
+
+            if (estateDetails == null) return View("Not found");
+            return View(estateDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var estateDetails = await _service.GetByIdAsync(id);
+
+            if (estateDetails == null) return View("Not found");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+    }
 }
