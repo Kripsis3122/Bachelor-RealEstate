@@ -31,13 +31,13 @@
 
             <main id="rightM" style="flex:1">
                     <div style="margin-left:4px; margin-top:5px;">
-						<form method="GET" action="" onsubmit="gett()" id="filters">
+						<form id="filters" asp-controller="Estates" asp-action="Filters">
 							<fieldset style="padding: 13px; border-radius: 5px; border: medium; background-color: rgb(245, 245, 245); --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-bottom: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-bgcolor: #1e2021;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-bgcolor="">
 								<legend>Filters</legend>
 								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
 									Price:
-									<input id="pr_min" name="pr_min" placeholder="from" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">&nbsp;&nbsp;
-									<input name="pr_max" placeholder="to" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">
+									<input id="pr_min" name="pr_min"  placeholder="from" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">&nbsp;&nbsp;
+									<input name="pr_max"  placeholder="to" value="" type="number" style="font-weight: bold; height: 20px; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; font-size: 13px; width: 100px; --darkreader-inline-border-top: currentcolor; --darkreader-inline-border-right: currentcolor; --darkreader-inline-border-left: currentcolor; --darkreader-inline-border-bottom: #8c8273;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-left="" data-darkreader-inline-border-bottom="">
 								</span>
 								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
 									Object area, m²:
@@ -52,11 +52,12 @@
 								</span>
 
 								<span style="padding-right:13px; height:30px; display:inline-block; white-space: nowrap;">
-									<input type="button" onclick="gett()" style="margin-left: 15px" value="   ✔   ">
-									<input type="button" style="margin-left: 15px" name="reset_f" onclick="location.href='nedvijimost'" value=" ✘ ">
+									<input type="submit" style="margin-left: 15px" value="   ✔   ">
+									<input type="button" style="margin-left: 15px" name="reset_f" onclick="location.href = 'https://localhost:7020/';" value=" ✘ ">
 								</span>
 							</fieldset>
-
+						</form>
+					
 							<div style="margin-top: 5px; padding: 13px; border-radius: 5px; background-color: rgb(250, 250, 250); --darkreader-inline-bgcolor: #1b1d1e;" data-darkreader-inline-bgcolor="">
 							<div class="dropdown">
 								<button onclick="myFunction()" class="dropbtn">Sort by:</button>
@@ -69,7 +70,7 @@
 								</div>
 							</div>
 							</div>
-						</form>
+
 						<div class="row">
 						@foreach (var item in Model)
 						{

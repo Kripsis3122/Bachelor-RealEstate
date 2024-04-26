@@ -1,4 +1,5 @@
 ﻿using RealEstate1.Data.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
@@ -34,7 +35,7 @@ namespace RealEstate1.Models
 		[Required(ErrorMessage = "Estate category is required")]
 		public EstateCategory EstateCategory { get; set; }
 
-        public DateOnly? date_added { get; set; }
-        
-    }
+        public DateOnly date_added { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+
+	}
 }

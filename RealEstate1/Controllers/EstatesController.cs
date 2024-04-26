@@ -44,6 +44,46 @@ namespace RealEstate1.Controllers
 
             return View("Index", filteredResult);
         }
+
+		public async Task<IActionResult> Filters(int pr_min, int pr_max, int p_1_min, int p_1_max, int p_2_min, int p_2_max)
+		{
+			var allEstates = await _service.GetAllAsync();
+			var filteredResult = allEstates;
+
+			if (pr_max == 0) pr_max = 2147483647;
+			
+			if(p_1_max == 0 && p_2_max == 0 && p_1_min == 0 && p_2_min == 0)
+			{
+				p_1_max = 2147483647;
+				p_2_max = 2147483647;
+
+				filteredResult = allEstates
+					.Where(e => e.Price >= pr_min && e.Price <= pr_max)
+					.Where(e => e.Size >= p_1_min && e.Size <= p_1_max)
+					.Where(e => e.Size >= p_2_min && e.Size <= p_2_max).ToList();
+			}
+			else if(p_2_max == 0 && p_2_min == 0)
+			{
+				if (p_1_max == 0) p_1_max = 2147483647;
+
+				filteredResult = allEstates
+					.Where(e => e.Price >= pr_min && e.Price <= pr_max)
+					.Where(e => e.Size >= p_1_min && e.Size <= p_1_max)
+					.Where(e => (int)e.EstateCategory != 4).ToList();
+			}
+			else if(p_1_max == 0 && p_1_min == 0)
+			{
+				if (p_2_max == 0) p_2_max = 2147483647;
+
+				filteredResult = allEstates
+				.Where(e => e.Price >= pr_min && e.Price <= pr_max)
+				.Where(e => e.Size >= p_2_min && e.Size <= p_2_max)
+				.Where(e => (int)e.EstateCategory == 4).ToList();
+			}
+
+
+			return View("Index", filteredResult);
+		}
 		public async Task<IActionResult> SortByName()
 		{
 			var allEstates = await _service.GetAllAsync();
